@@ -20,21 +20,20 @@ export default class GetEvents extends React.Component {
           function pad(n) {
             return (n < 10) ? ("0" + n) : n;
           }
+          var endHours, startHours, endAMPM, startAMPM;
 
-          if ( endTime.getHours() > 12 ){
-            var endHours = endTime.getHours() % 12;
-            var endAMPM = "PM";
-          } else {
-            endHours = pad(endTime.getHours());
-            endAMPM = "AM";
+          function twentyfourtotwelve(hours) {
+
+            if ( hours > 11 ){
+              var AMPM = "PM";
+            } else {
+              AMPM = "AM";
+            }
+            hours = hours === 12 ? 12 : hours % 12
+            return [hours, AMPM];
           }
-          if ( startTime.getHours() > 12 ){
-            var startHours = startTime.getHours() % 12;
-            var startAMPM = "PM";
-          } else {
-            startHours = pad(startTime.getHours());
-            startAMPM = "AM";
-          }
+          [startHours, startAMPM] = twentyfourtotwelve(startTime.getHours());
+          [endHours, endAMPM] = twentyfourtotwelve(endTime.getHours());
 
           if(startAMPM === endAMPM) {
             event.start.time = `${startHours}:${pad(startTime.getMinutes())}`;
