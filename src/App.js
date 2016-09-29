@@ -32,8 +32,6 @@ const floorSpaces = {
 , smallconference: makeGoogleCalendarURL("theedney.com_3s22k2kouob2co8kdt6gqkg14g@group.calendar.google.com")
 };
 
-console.log(floorSpaces)
-
 class App extends Component {
   render() {
     return (
