@@ -21,13 +21,13 @@ export default class GetEvents extends React.Component {
             return (n < 10) ? ("0" + n) : n;
           }
           var endHours, startHours, endAMPM, startAMPM;
-          
+
           function twentyfourtotwelve(hours) {
-            
+
             if ( hours > 11 ){
               var AMPM = "PM";
             } else {
-              var AMPM = "AM";
+              AMPM = "AM";
             }
             hours = hours === 12 ? 12 : hours % 12
             return [hours, AMPM];
