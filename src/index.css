@@ -18,6 +18,10 @@
   margin-right: -1rem;
 }
 
+.set-height {
+  height: 20vh;
+}
+
 h1,
 h2,
 h3,
