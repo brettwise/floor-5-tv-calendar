@@ -2,6 +2,7 @@
   "name": "floor-5-tv-calendar",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://brettwise.github.io/floor-5-tv-calendar",
   "devDependencies": {
     "axios": "^0.14.0",
     "react-scripts": "0.4.3"
@@ -14,7 +15,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "homepage": "http://brettwise.github.io/floor-5-tv-calendar",
     "eject": "react-scripts eject"
   }
 }
