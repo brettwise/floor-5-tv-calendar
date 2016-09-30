@@ -49,15 +49,23 @@ export default class GetEvents extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.state.events.map(event =>
-          <div key={event.id}>
-            <p className="event-title">{event.summary}</p>
-            <p className="event-time">{event.start.time} - {event.end.time}</p>
-          </div>
-        )}
-      </div>
-    )
+    if (this.state.events.length === 0) {
+      return (
+        <div>
+          <p className="event-title">No Scheduled Events Today</p>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          {this.state.events.map(event =>
+            <div key={event.id}>
+              <p className="event-title">{event.summary}</p>
+              <p className="event-time">{event.start.time} - {event.end.time}</p>
+            </div>
+          )}
+        </div>
+      )
+    }
   }
 }

@@ -38,7 +38,7 @@ class App extends Component {
       <div>
         <TitleAndTime/>
         <div className="side-padding">
-          <div className="grid">
+          <div className="grid set-height">
             <div className="la">
               <h2 className="event-space"><div className="left-arrow">➤</div>Accelerator Space</h2>
               <GetEvents SpacesCalURL={floorSpaces.f5accelerator}/>
