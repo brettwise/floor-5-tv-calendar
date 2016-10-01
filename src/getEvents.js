@@ -14,18 +14,18 @@ export default class GetEvents extends React.Component {
     axios.get(this.props.SpacesCalURL)
       .then(res => {
         const events = res.data.items.map(function(event) {
+          let AMPM, endHours, startHours, endAMPM, startAMPM;
           let startTime = new Date(event.start.dateTime);
           let endTime = new Date(event.end.dateTime);
 
           function pad(n) {
             return (n < 10) ? ("0" + n) : n;
           }
-          var endHours, startHours, endAMPM, startAMPM;
 
           function twentyfourtotwelve(hours) {
 
             if ( hours > 11 ){
-              var AMPM = "PM";
+              AMPM = "PM";
             } else {
               AMPM = "AM";
             }
