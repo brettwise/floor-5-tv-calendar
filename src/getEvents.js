@@ -10,7 +10,7 @@ export default class GetEvents extends React.Component {
     };
   }
 
-  componentDidMount() {
+  queryEvents() {
     axios.get(this.props.SpacesCalURL)
       .then(res => {
         const events = res.data.items.map(function(event) {
@@ -53,6 +53,13 @@ export default class GetEvents extends React.Component {
         });
         this.setState({ events });
       });
+    }
+
+  componentDidMount() {
+    this.queryEvents();
+    window.setInterval(function () {
+      this.queryEvents();
+    }.bind(this), 5 * 60 * 1000);
   }
 
   render() {
