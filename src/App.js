@@ -20,7 +20,6 @@ function getEOD() {
   return end.toISOString();
 }
 
-
 function makeGoogleCalendarURL(calID) {
   return `https://www.googleapis.com/calendar/v3/calendars/${calID}/events?singleEvents=true&orderBy=startTime&timeMin=${getBOD()}&timeMax=${getEOD()}&key=AIzaSyB58sYwucI7ZGG2_nVhqadyRk0_kEjw04E`
 }
