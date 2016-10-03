@@ -23,7 +23,6 @@ export default class GetEvents extends React.Component {
           }
 
           function twentyfourtotwelve(hours) {
-
             if ( hours > 11 ){
               AMPM = "PM";
             } else {
@@ -32,6 +31,7 @@ export default class GetEvents extends React.Component {
             hours = hours === 12 ? 12 : hours % 12
             return [hours, AMPM];
           }
+
           [startHours, startAMPM] = twentyfourtotwelve(startTime.getHours());
           [endHours, endAMPM] = twentyfourtotwelve(endTime.getHours());
 
@@ -42,10 +42,11 @@ export default class GetEvents extends React.Component {
             event.start.time = `${startHours}:${pad(startTime.getMinutes())} ${startAMPM}`;
             event.end.time = `${endHours}:${pad(endTime.getMinutes())} ${endAMPM}`;
           }
+
           return event;
         });
-        this.setState({ events });
-      });
+      this.setState({ events });
+    });
   }
 
   render() {
