@@ -50,7 +50,13 @@ export default class GetEvents extends React.Component {
             event.class = "current";
           }
           return event;
-        });
+      }).filter( event => {
+        if(event.hasOwnProperty("visibility") && event.visibility === "private") {
+          return false;
+        } else {
+          return true;
+        }
+      });
         this.setState({ events });
       });
     }
