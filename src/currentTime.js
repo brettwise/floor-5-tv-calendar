@@ -3,8 +3,14 @@ import React from 'react';
 export default class CurrentTime extends React.Component {
 
   setTime() {
+
     let currentDate = new Date();
-    let hours = currentDate.getUTCHours() + parseInt(this.props.UTCOffset, 10);
+    let hours = 0;
+    if( currentDate.dst() ) {
+      hours = currentDate.getUTCHours() + parseInt(this.props.UTCOffset, 10);
+    } else {
+      hours = currentDate.getUTCHours() + (parseInt(this.props.UTCOffset, 10) - 1);
+    }
     let minutes = currentDate.getUTCMinutes();
     let seconds = currentDate.getUTCSeconds();
 
@@ -41,4 +47,13 @@ export default class CurrentTime extends React.Component {
       <span className="time uppercase">{this.state.hours}:{this.state.minutes}:{this.state.seconds}</span>
     )
   }
+}
+Date.prototype.stdTimezoneOffset = function() {
+    var jan = new Date(this.getFullYear(), 0, 1);
+    var jul = new Date(this.getFullYear(), 6, 1);
+    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+}
+
+Date.prototype.dst = function() {
+    return this.getTimezoneOffset() < this.stdTimezoneOffset();
 }
